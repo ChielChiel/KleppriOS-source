@@ -17,6 +17,7 @@
 		CCD14CD524157EAE002C8025 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD14CD324157EAE002C8025 /* LaunchScreen.storyboard */; };
 		CCD14CE024157EAF002C8025 /* SwiftUiTest2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD14CDF24157EAF002C8025 /* SwiftUiTest2Tests.swift */; };
 		CCD14CEB24157EAF002C8025 /* SwiftUiTest2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD14CEA24157EAF002C8025 /* SwiftUiTest2UITests.swift */; };
+		CCE34910241E805E00AA5B61 /* DetailMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE3490F241E805E00AA5B61 /* DetailMessages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		CCD14CE624157EAF002C8025 /* SwiftUiTest2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUiTest2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD14CEA24157EAF002C8025 /* SwiftUiTest2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUiTest2UITests.swift; sourceTree = "<group>"; };
 		CCD14CEC24157EAF002C8025 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCE3490F241E805E00AA5B61 /* DetailMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMessages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				CCD14CC824157EAE002C8025 /* AppDelegate.swift */,
 				CCD14CCA24157EAE002C8025 /* SceneDelegate.swift */,
 				CCD14CCC24157EAE002C8025 /* ContentView.swift */,
+				CCE3490F241E805E00AA5B61 /* DetailMessages.swift */,
 				CCD14CCE24157EAE002C8025 /* Assets.xcassets */,
 				CCD14CD324157EAE002C8025 /* LaunchScreen.storyboard */,
 				CCD14CD624157EAE002C8025 /* Info.plist */,
@@ -275,6 +278,7 @@
 			files = (
 				CCB183D4241C14DC003AD585 /* Fetch.swift in Sources */,
 				CC3E0602241D8DB800C69A28 /* JsonList.swift in Sources */,
+				CCE34910241E805E00AA5B61 /* DetailMessages.swift in Sources */,
 				CCD14CC924157EAE002C8025 /* AppDelegate.swift in Sources */,
 				CCD14CCB24157EAE002C8025 /* SceneDelegate.swift in Sources */,
 				CCD14CCD24157EAE002C8025 /* ContentView.swift in Sources */,

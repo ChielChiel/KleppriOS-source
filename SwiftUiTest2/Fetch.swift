@@ -17,12 +17,14 @@ public class NetworkingManager: ObservableObject {
         public var id: Int
         public var company: String
         public var sub: String
+        public var detail: String
+        public var send: String
     }
     
     
     @Published var bedrijfLijst = [BedrijfList]()
     init() {
-       print("call")
+        print("call")
         // guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1?code=5xasd87b") else { return }
         guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1?code=5xasd87b") else { return }
         
