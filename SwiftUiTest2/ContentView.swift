@@ -27,19 +27,31 @@ struct ContentView: View {
                 ZStack {
                     IdCard(code: "5xasd87b")
                     
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            print("Button tapped")
-                        }) {
-                            Image(systemName: "heart.fill")
-                                .foregroundColor(.gray)
-                        }
-                        .buttonStyle(SimpleButtonStyle())
-                    }
-                    .padding(.top, 20)
-                    .layoutPriority(20)
+//                    HStack {
+//                        Spacer()
+//                        Button(action: {
+//                            print("Button tapped")
+//                        }) {
+//                            Image(systemName: "heart.fill")
+//                                .foregroundColor(.gray)
+//                        }
+//                        .buttonStyle(SimpleButtonStyle())
+//                    }
+//                    .padding(20)
+//                    .layoutPriority(20)
                 }
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        print("Button tapped")
+                    }) {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .buttonStyle(SimpleButtonStyle())
+                }
+                .padding(20)
+                
                 ZStack(alignment: .bottom) {
                     Rectangle()
                         .fill(Color.offWhite)
@@ -215,7 +227,7 @@ struct IdCard: View {
                     .foregroundColor(.black)
                 }
             .animation(.spring())
-            .padding(.top, 280)
+            .padding(.top, 50)
             .onLongPressGesture(minimumDuration: 1.4,pressing: { (drukken) in
                 self.isLongPress = drukken
                 if self.isLongPress {
@@ -242,16 +254,18 @@ struct IdCard: View {
             }
         }.onAppear {
             print("appear")
-//            NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "copy-code-noti"), object: nil, queue: .main) { (Noti) in
-//                print("kopie")
-//                let kopie = Noti.userInfo?["copy"] as? Bool
-//
-//                self.isLongPress = kopie ?? false
-//                if self.isLongPress {
-//                        // Enable string-related control...
-//                        UIPasteboard.general.string = self.code
-//                }
-//            }
+            NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "copy-code-noti"), object: nil, queue: .main) { (Noti) in
+                print("kopie")
+                let kopie = Noti.userInfo?["copy"] as? Bool
+
+                self.isLongPress = kopie ?? false
+                if self.isLongPress {
+                        // Enable string-related control...
+                        UIPasteboard.general.string = self.code
+                }
+                
+                
+            }
         }
     }
 }
@@ -286,7 +300,7 @@ struct RoundedCorner: Shape {
 struct SimpleButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding(30)
+            .padding(20)
             .background(
                 Circle()
                     .fill(Color.offWhite)
