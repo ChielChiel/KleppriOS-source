@@ -10,7 +10,13 @@ import Foundation
 import SwiftUI
 import Combine
 
-
+//public struct BedrijfList: Decodable, Identifiable, Hashable {
+//    public var id: Int
+//    public var company: String
+//    public var sub: String
+//    public var detail: String
+//    public var send: String
+//}
 
 public class NetworkingManager: ObservableObject {
     public struct BedrijfList: Decodable, Identifiable, Hashable {
@@ -25,8 +31,8 @@ public class NetworkingManager: ObservableObject {
     @Published var bedrijfLijst = [BedrijfList]()
     init() {
         print("call")
-        // guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1?code=5xasd87b") else { return }
-        guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1?code=5xasd87b") else { return }
+        // guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1/get/?code=5xasd87b") else { return }
+        guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1/get/?code=5xasd87b") else { return }
         
         URLSession.shared.dataTask(with: url) {(data,response,error) in
             do {

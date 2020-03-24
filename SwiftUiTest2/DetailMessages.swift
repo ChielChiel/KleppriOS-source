@@ -18,7 +18,7 @@ struct DetailMessages: View {
                 CompanyCard(name: bedrijf.company, sub: bedrijf.sub)
                     .padding(.horizontal)
                     .padding(.top, -200)
-                EnWebView(width: 330, height: 330, html: "<h2>hallo<h2><br><p>boi</p><ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>")
+                EnWebView(width: 330, height: 330, html: "<h2>hallo</h2><br><p>boi</p><ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>")
             }
         }
         .edgesIgnoringSafeArea(.all)
