@@ -10,44 +10,14 @@ import Foundation
 import SwiftUI
 import Combine
 
-//public struct BedrijfList: Decodable, Identifiable, Hashable {
-//    public var id: Int
-//    public var company: String
-//    public var sub: String
-//    public var detail: String
-//    public var send: String
-//}
+struct AllMessages: Codable {
+    var messages: [Message]
+}
 
-public class NetworkingManager: ObservableObject {
-    public struct BedrijfList: Decodable, Identifiable, Hashable {
-        public var id: Int
-        public var company: String
-        public var sub: String
-        public var detail: String
-        public var send: String
-    }
-    
-    
-    @Published var bedrijfLijst = [BedrijfList]()
-    init() {
-        print("call")
-        // guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1/get/?code=5xasd87b") else { return }
-        guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1/get/?code=5xasd87b") else { return }
-        
-        URLSession.shared.dataTask(with: url) {(data,response,error) in
-            do {
-                if let d = data {
-                    let decodedLists = try JSONDecoder().decode([BedrijfList].self, from: d)
-                    DispatchQueue.main.async {
-                        self.bedrijfLijst = decodedLists
-                    }
-                }else {
-                    print("No Data")
-                }
-            } catch {
-                print ("Error")
-            }
-            
-        }.resume()
-    }
+struct Message: Codable, Hashable {
+    var id: Int
+    var company: String
+    var sub: String
+    var detail: String
+    var send: String
 }

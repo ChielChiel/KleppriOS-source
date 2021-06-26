@@ -10,12 +10,12 @@ import SwiftUI
 import WebKit
 
 struct DetailMessages: View {
-    var bedrijf: NetworkingManager.BedrijfList
+    var bericht: Message
     var body: some View {
         ZStack(alignment: .top) {
             Color.offWhite
             VStack(alignment: .center) {
-                CompanyCard(name: bedrijf.company, sub: bedrijf.sub)
+                CompanyCard(name: self.bericht.company, sub: self.bericht.sub)
                     .padding(.horizontal)
                     .padding(.top, -200)
                 EnWebView(width: 330, height: 330, html: "<h2>hallo</h2><br><p>boi</p><ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>")
@@ -109,6 +109,6 @@ struct WebView: UIViewRepresentable {
 struct DetailMessages_Previews: PreviewProvider {
     
     static var previews: some View {
-        DetailMessages(bedrijf: NetworkingManager.BedrijfList(id: 1, company: "Michiel Schouten Enzone", sub: "Ah yes, enslaved water", detail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum nulla enim, et finibus neque venenatis sit amet. Aenean fringilla mattis nisl, id eleifend diam efficitur aliquam. Cras consequat neque et molestie pellentesque. Fusce ultricies, elit nec lacinia fermentum, elit tellus commodo leo, eu elementum magna libero quis metus. Nam.", send: "16/03 12:12"))
+        DetailMessages(bericht: Message(id: 1, company: "Michiel Schouten Enzone", sub: "Ah yes, enslaved water", detail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum nulla enim, et finibus neque venenatis sit amet. Aenean fringilla mattis nisl, id eleifend diam efficitur aliquam. Cras consequat neque et molestie pellentesque. Fusce ultricies, elit nec lacinia fermentum, elit tellus commodo leo, eu elementum magna libero quis metus. Nam.", send: "16/03 12:12"))
     }
 }

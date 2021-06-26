@@ -66,8 +66,6 @@ struct ContentView: View {
                         if !(trans > 9 && trans < 12) && !(trans > -15 && trans < 0) {
                             self.relPos = trans
                         }
-                        
-                        print(trans)
                     })
                         
                         .onEnded({ (waarde) in
@@ -100,6 +98,7 @@ struct ContentView: View {
                             self.openMenu()
                         }, label: {
                             Image(systemName: "gear")
+                                .padding()
                                 .imageScale(.large)
                                 .foregroundColor(.black)
                         })
@@ -121,7 +120,7 @@ struct ContentView: View {
 
 //MARK: Subscribe
 struct Subscribe: View {
-    @ObservedObject var fetcher = NetworkingManager()
+    @State var varMessages = [Message]()
     @State private var action: Int? = 0
     
     
@@ -129,13 +128,14 @@ struct Subscribe: View {
         ZStack {
             Color.offWhite
             List {
-                ForEach(fetcher.bedrijfLijst, id: \.self) { bedrijfList in
-                    ListItems(bedrijfFull: bedrijfList)
+                ForEach(varMessages, id: \.self) { bericht in
+                    ListItems(Bericht: bericht)
                 }
             }
                 
             .onAppear {
                 print("list is shown")
+                self.loadData()
                 UITableView.appearance().separatorColor = .clear
                 UITableViewCell.appearance().backgroundColor = .clear
                 UITableView.appearance().backgroundColor = .clear
@@ -147,11 +147,43 @@ struct Subscribe: View {
             
         }
     }
+    
+    
+    func loadData() {
+        print("call")
+        // guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1/get/?code=5xasd87b") else { return }
+        guard let url = URL(string: "https://kleppr.herokuapp.com/api/v1/get/?code=5xasd87b&type=iOS") else { return }
+        
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                if let decodedResponse = try? JSONDecoder().decode([Message].self, from: data) {
+                    // we have good data – go back to the main thread
+                    
+                    DispatchQueue.main.async {
+                        // update our UI
+                        //print("response: \(decodedResponse.debugDescription)")
+                        self.varMessages = decodedResponse
+                        //print("messages: \(self.varMessages)")
+
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+            
+        }.resume()
+    }
+    
+    
+    
 }
 
 //MARK: ListItems
 struct ListItems: View {
-    @State var bedrijfFull: NetworkingManager.BedrijfList
+    @State var Bericht: Message
     @State private var action: Int?
     @State private var isLongPress: Bool = false
     @State private var afzet: CGFloat = .zero
@@ -160,7 +192,7 @@ struct ListItems: View {
         HStack {
             ZStack(alignment: .leading) {
                 //NavigationLink(destination: DetailMessages(bedrijf: bedrijfFull)) {
-                NavigationLink(destination: DetailMessages(bedrijf: bedrijfFull), tag: 1, selection: $action) {
+                NavigationLink(destination: DetailMessages(bericht: Bericht), tag: 1, selection: $action) {
                     EmptyView()
                 }
                 Rectangle()
@@ -185,10 +217,10 @@ struct ListItems: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        Text(self.bedrijfFull.company)
+                        Text(self.Bericht.company)
                             .font(.headline)
                             .foregroundColor(.black)
-                        Text(self.bedrijfFull.sub)
+                        Text(self.Bericht.sub)
                             .font(.subheadline)
                             .foregroundColor(.black)
                     }
@@ -199,11 +231,13 @@ struct ListItems: View {
             .offset(x: 8 * self.afzet, y: .zero)
             .onLongPressGesture(minimumDuration: 1.4,pressing: { (drukken) in
                 self.isLongPress = drukken
-            }) {
+                print("send: \(self.Bericht.send)")
+                }) {
             }
             
             if self.isLongPress {
-                Text(self.bedrijfFull.send)
+                //print(self.Bericht.send)
+                Text(self.Bericht.send)
                     .foregroundColor(.black)
                     .onAppear {
                         self.afzet = -10
@@ -246,7 +280,7 @@ struct IdCard: View {
                     .fontWeight(.light)
                     .foregroundColor(.black)
             }
-            .padding(.top, -250)
+            .padding(.top, -270)
             .animation(.spring())
                 //.padding(.top, 50)
                 .onLongPressGesture(minimumDuration: 1.4,pressing: { (drukken) in
@@ -259,7 +293,7 @@ struct IdCard: View {
                     
             }
             if self.isLongPress {
-                Text("Copied")
+                Text("Code copied")
                     .onAppear {
                         self.afzet = 10
                 }
@@ -274,7 +308,6 @@ struct IdCard: View {
                 
             }
         }.onAppear {
-            print("appear")
             NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "copy-code-noti"), object: nil, queue: .main) { (Noti) in
                 print("kopie")
                 let kopie = Noti.userInfo?["copy"] as? Bool
@@ -419,13 +452,13 @@ struct MenuItems: View {
                     .labelsHidden()
                     .onAppear {
                         self.afzet = -10
-                    }
-                    .onDisappear {
-                        self.afzet = .zero
-                    }
-                    .offset(x: 1 * self.afzet, y: .zero)
-                    .padding(.leading, -60)
-                    .animation(.spring())
+                }
+                .onDisappear {
+                    self.afzet = .zero
+                }
+                .offset(x: 1 * self.afzet, y: .zero)
+                .padding(.leading, -60)
+                .animation(.spring())
                 
             }
             

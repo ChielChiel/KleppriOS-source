@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC3E0602241D8DB800C69A28 /* JsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3E0601241D8DB800C69A28 /* JsonList.swift */; };
 		CCB183D4241C14DC003AD585 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB183D3241C14DC003AD585 /* Fetch.swift */; };
 		CCD14CC924157EAE002C8025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD14CC824157EAE002C8025 /* AppDelegate.swift */; };
 		CCD14CCB24157EAE002C8025 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD14CCA24157EAE002C8025 /* SceneDelegate.swift */; };
@@ -38,9 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC3E0601241D8DB800C69A28 /* JsonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonList.swift; sourceTree = "<group>"; };
 		CCB183D3241C14DC003AD585 /* Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
-		CCD14CC524157EAE002C8025 /* SwiftUiTest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUiTest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCD14CC524157EAE002C8025 /* Kleppr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kleppr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD14CC824157EAE002C8025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD14CCA24157EAE002C8025 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CCD14CCC24157EAE002C8025 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,7 +93,7 @@
 		CCD14CC624157EAE002C8025 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CCD14CC524157EAE002C8025 /* SwiftUiTest2.app */,
+				CCD14CC524157EAE002C8025 /* Kleppr.app */,
 				CCD14CDB24157EAF002C8025 /* SwiftUiTest2Tests.xctest */,
 				CCD14CE624157EAF002C8025 /* SwiftUiTest2UITests.xctest */,
 			);
@@ -105,7 +103,6 @@
 		CCD14CC724157EAE002C8025 /* SwiftUiTest2 */ = {
 			isa = PBXGroup;
 			children = (
-				CC3E0601241D8DB800C69A28 /* JsonList.swift */,
 				CCB183D3241C14DC003AD585 /* Fetch.swift */,
 				CCD14CC824157EAE002C8025 /* AppDelegate.swift */,
 				CCD14CCA24157EAE002C8025 /* SceneDelegate.swift */,
@@ -162,7 +159,7 @@
 			);
 			name = SwiftUiTest2;
 			productName = SwiftUiTest2;
-			productReference = CCD14CC524157EAE002C8025 /* SwiftUiTest2.app */;
+			productReference = CCD14CC524157EAE002C8025 /* Kleppr.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CCD14CDA24157EAF002C8025 /* SwiftUiTest2Tests */ = {
@@ -277,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCB183D4241C14DC003AD585 /* Fetch.swift in Sources */,
-				CC3E0602241D8DB800C69A28 /* JsonList.swift in Sources */,
 				CCE34910241E805E00AA5B61 /* DetailMessages.swift in Sources */,
 				CCD14CC924157EAE002C8025 /* AppDelegate.swift in Sources */,
 				CCD14CCB24157EAE002C8025 /* SceneDelegate.swift in Sources */,
@@ -456,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ChielChiel.SwiftUiTest2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Kleppr;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -476,7 +472,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ChielChiel.SwiftUiTest2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Kleppr;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
